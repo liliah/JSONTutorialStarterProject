@@ -15,6 +15,10 @@
 		7B8DD8371E889A930022A97A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B8DD8351E889A930022A97A /* LaunchScreen.storyboard */; };
 		7B8DD8421E889A930022A97A /* JSONTutorialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8DD8411E889A930022A97A /* JSONTutorialTests.swift */; };
 		7B8DD84D1E889A930022A97A /* JSONTutorialUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8DD84C1E889A930022A97A /* JSONTutorialUITests.swift */; };
+		DE57E3E31F028AAD00E59D29 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57E3E21F028AAD00E59D29 /* MovieViewModel.swift */; };
+		DE57E3E61F028D4E00E59D29 /* JSONDOwnloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57E3E51F028D4E00E59D29 /* JSONDOwnloader.swift */; };
+		DE57E3E81F028FB300E59D29 /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57E3E71F028FB300E59D29 /* MovieService.swift */; };
+		DE57E3EB1F029BCC00E59D29 /* Cachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57E3EA1F029BCC00E59D29 /* Cachable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		7B8DD8481E889A930022A97A /* JSONTutorialUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONTutorialUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B8DD84C1E889A930022A97A /* JSONTutorialUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONTutorialUITests.swift; sourceTree = "<group>"; };
 		7B8DD84E1E889A940022A97A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE57E3E21F028AAD00E59D29 /* MovieViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
+		DE57E3E51F028D4E00E59D29 /* JSONDOwnloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDOwnloader.swift; sourceTree = "<group>"; };
+		DE57E3E71F028FB300E59D29 /* MovieService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
+		DE57E3EA1F029BCC00E59D29 /* Cachable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cachable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,7 @@
 		7B031A4D1E889ED200892A98 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				DE57E3E21F028AAD00E59D29 /* MovieViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -130,6 +139,8 @@
 		7B8DD82B1E889A930022A97A /* JSONTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				DE57E3E91F029BBA00E59D29 /* Extensions */,
+				DE57E3E41F028D3600E59D29 /* Network */,
 				7B8DD82C1E889A930022A97A /* AppDelegate.swift */,
 				7B031A4D1E889ED200892A98 /* ViewModel */,
 				7B031A4C1E889ECA00892A98 /* View */,
@@ -158,6 +169,23 @@
 				7B8DD84E1E889A940022A97A /* Info.plist */,
 			);
 			path = JSONTutorialUITests;
+			sourceTree = "<group>";
+		};
+		DE57E3E41F028D3600E59D29 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DE57E3E51F028D4E00E59D29 /* JSONDOwnloader.swift */,
+				DE57E3E71F028FB300E59D29 /* MovieService.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		DE57E3E91F029BBA00E59D29 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DE57E3EA1F029BCC00E59D29 /* Cachable.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,9 +325,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B8DD82D1E889A930022A97A /* AppDelegate.swift in Sources */,
+				DE57E3E31F028AAD00E59D29 /* MovieViewModel.swift in Sources */,
 				7B031A491E889E1E00892A98 /* MovieFeedVC.swift in Sources */,
 				7B031A511E88B60900892A98 /* Movie.swift in Sources */,
+				DE57E3EB1F029BCC00E59D29 /* Cachable.swift in Sources */,
+				DE57E3E61F028D4E00E59D29 /* JSONDOwnloader.swift in Sources */,
 				7B031A4F1E88B1F400892A98 /* MovieCell.swift in Sources */,
+				DE57E3E81F028FB300E59D29 /* MovieService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

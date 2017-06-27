@@ -87,5 +87,16 @@ class MovieCell: UITableViewCell {
         dateLabel.topAnchor.constraint(equalTo: movieTitleLabel.bottomAnchor).isActive = true
         
     }
+    
+    // MARK: MVVM implementation
+    func displayMovieInCell (using viewModel:MovieViewModel){
+        movieTitleLabel.text = viewModel.title
+        dateLabel.text = viewModel.releaseDate
+        priceLabel.text = viewModel.purchasePrice
+        movieImage.loadImageUsingCacheWithURLString(viewModel.imageURL, placeHolder: nil){
+            (bool) in
+            // actins if needed
+        }
+    }
 }
 

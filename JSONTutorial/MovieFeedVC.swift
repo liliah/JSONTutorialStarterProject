@@ -12,14 +12,39 @@ import UIKit
 class MovieFeedVC: UITableViewController {
     
     private let cellID = "cellID"
-    private var moviesArray = [Movie]()
+    private var moviesArray = [Movie](){
+        didSet{
+            self.tableView.reloadData()
+        }
+    }
+    
+    let service = MovieService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         tableView.register(MovieCell.self, forCellReuseIdentifier: cellID)
         tableView.contentInset = UIEdgeInsets(top: 22, left: 0, bottom: 0, right: 0)
-        dummyMovie()
+        getMovies(fromService: service)
+    }
+    
+    // MVVM Implementation with generic function
+    private func getMovies<S: Gettable>(fromService service: S) where S.T == Array<Movie?> {
+        service.get { [weak self] (result) in
+            switch result {
+            case .Success(let movies):
+                var tempMovies = [Movie]()
+                for movie in movies {
+                    if let movie = movie {
+                        tempMovies.append(movie)
+                    }
+                }
+                self?.moviesArray = tempMovies
+            //dump(self.movies)
+            case .Error(let error):
+                print(error)
+            }
+        }
     }
     
     func dummyMovie() {
@@ -31,9 +56,15 @@ class MovieFeedVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as! MovieCell
         let movie = moviesArray[indexPath.row]
-        cell.movieTitleLabel.text = movie.title.uppercased()
-        cell.dateLabel.text = "Release date: \(movie.releaseDate)"
-        cell.priceLabel.text = "\(movie.purchasePrice.amount) \(movie.purchasePrice.currency)"
+        
+        // Without MVVM
+//        cell.movieTitleLabel.text = movie.title.uppercased()
+//        cell.dateLabel.text = "Release date: \(movie.releaseDate)"
+//        cell.priceLabel.text = "\(movie.purchasePrice.amount) \(movie.purchasePrice.currency)"
+        
+        //With MVVM
+        let movieViewModel = MovieViewModel(model: movie)
+        cell.displayMovieInCell(using: movieViewModel)
         return cell
     }
     
